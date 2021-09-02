@@ -3,8 +3,10 @@ Sample. здесь нужно разверстать форму регистра
 </template>
 
 <script>
+
+
 export default {
-  name: "sign-up"
+  name: "sign-up-"
 }
 </script>
 
