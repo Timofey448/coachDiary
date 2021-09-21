@@ -9,9 +9,6 @@ module.exports = {
         sky: colors.sky,
         cyan: colors.cyan,
       },
-      width: {
-        '600': '600px',
-      }
     },
   },
   variants: {
