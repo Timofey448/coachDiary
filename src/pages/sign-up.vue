@@ -112,12 +112,12 @@ export default {
       return errors;
     },
     isEmail(email) {
-      const re = /\S+@\S+\.\S+/;
-      return re.test(email);
+      const emailRegex = /\S+@\S+\.\S+/;
+      return emailRegex.test(email);
     },
     isPassword(password) {
-      const re2 = /[a-zA-Z0-9]/;
-      return re2.test(password);      
+      const passwordRegex = /[a-zA-Z0-9]/;
+      return passwordRegex.test(password);      
     },
   },
 }
