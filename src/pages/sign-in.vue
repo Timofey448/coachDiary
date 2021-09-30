@@ -63,26 +63,11 @@ export default {
       const errors = {};
       if (!fields.email) errors.email = "Email required";
       if (!fields.password) errors.password = "Password required";
-      if (fields.email && !this.isEmail(fields.email)) {
-        errors.email = "Invalid Email";
-      }
-      if (fields.password && !this.isPassword(fields.password)) {
-        errors.password = "Invalid Password";
-      }
-      if (fields.password && 
-        this.isPassword(fields.password) &&
-        (fields.password.length < 8 || fields.password.length > 12) ) {
+      if (fields.password &&       
+        (fields.password.length < 8 || fields.password.length > 12)) {
         errors.password = "Please enter 8-12 characters";
       } 
       return errors;
-    },
-    isEmail(email) {
-      const emailRegex = /\S+@\S+\.\S+/;
-      return emailRegex.test(email);
-    },
-    isPassword(password) {
-      const passwordRegex = /[a-zA-Z0-9]/;
-      return passwordRegex.test(password);      
     },
   },
 }
