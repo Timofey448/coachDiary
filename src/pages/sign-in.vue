@@ -26,30 +26,13 @@
         >        
         <span class="text-red-500">{{ fieldsErrors.password }}</span>
       </div>
-
-      <div class="flex flex-col mb-4">
-        <label class="mb-1 text-sky-600">Password confirm</label>
-        <input
-          type="text"
-          placeholder="Confirm your password"
-          class="border rounded-md p-2 text-sm"
-          v-model="fields.confirmedPassword"
-        >
-        <span class="text-red-500">{{ fieldsErrors.confirmedPassword }}</span>
-      </div>
-
       <div class="flex flex-col">
         <button
           class="rounded-md border bg-green-400 text-white font-medium p-2"
-        >Create your account
+        >Start your work
         </button>
       </div>
     </form>
-
-    <div class="mt-3 flex">
-      <router-link class="text-sky-400 font-medium" to="/sign-in">Log in</router-link>
-      <p class="text-gray-400">(if you already have an account)</p>      
-    </div>
   </div> 
 </template>
 
@@ -60,13 +43,11 @@ export default {
     return {
       fields: {
         email: "",
-        password: "",
-        confirmedPassword: ""
+        password: ""
       },
       fieldsErrors: {
         email: undefined,
-        password: undefined,
-        confirmedPassword: undefined
+        password: undefined
       },
     }
   },
@@ -83,18 +64,11 @@ export default {
 
       this.fields.email = "";
       this.fields.password = "";
-      this.fields.confirmedPassword = "";
     },
     validateForm(fields) {
       const errors = {};
-      if (!fields.email) errors.email = "New email required";
-      if (!fields.password) errors.password = "New password required";
-      if (fields.password && !fields.confirmedPassword) {
-        errors.confirmedPassword = "Repeat password please";
-      }
-      if (!fields.password && !fields.confirmedPassword) {
-        errors.confirmedPassword = "New password required";
-      }
+      if (!fields.email) errors.email = "Email required";
+      if (!fields.password) errors.password = "Password required";
       if (fields.email && !this.isEmail(fields.email)) {
         errors.email = "Invalid Email";
       }
@@ -105,10 +79,6 @@ export default {
         this.isPassword(fields.password) &&
         (fields.password.length < 8 || fields.password.length > 12) ) {
         errors.password = "Please enter 8-12 characters";
-      }
-      if (fields.confirmedPassword && 
-        fields.confirmedPassword !== fields.password) {
-          errors.confirmedPassword = "Passwords mismath";
       } 
       return errors;
     },
