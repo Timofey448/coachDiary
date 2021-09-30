@@ -41,13 +41,14 @@
       <div class="flex flex-col">
         <button
           class="rounded-md border bg-green-400 text-white font-medium p-2"
-        >Start your work
+        >Create your account
         </button>
       </div>
     </form>
 
-    <div class="mt-3">
-      <p class="text-gray-400"><a class="text-sky-400 font-medium">Log in</a> (if you already have an account)</p>
+    <div class="mt-3 flex">
+      <router-link class="text-sky-400 font-medium" to="/sign-in">Log in</router-link>
+      <p class="text-gray-400">(if you already have an account)</p>      
     </div>
   </div> 
 </template>
@@ -67,12 +68,6 @@ export default {
         password: undefined,
         confirmedPassword: undefined
       },
-    }
-  },
-  computed: {
-    isPasswordInputLimitExceeded() {
-      return this.fields.password.length >= 8 && 
-        this.fields.password.length <= 12
     }
   },
   methods: {
@@ -103,7 +98,7 @@ export default {
       if (fields.password && 
         this.isPassword(fields.password) &&
         (fields.password.length < 8 || fields.password.length > 12) ) {
-        errors.password = "Password must have characters between 8 and 12";
+        errors.password = "Please enter 8-12 characters";
       }
       if (fields.confirmedPassword && 
         fields.confirmedPassword !== fields.password) {
