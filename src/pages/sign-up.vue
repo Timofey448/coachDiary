@@ -70,12 +70,6 @@ export default {
       },
     }
   },
-  computed: {
-    isPasswordInputLimitExceeded() {
-      return this.fields.password.length >= 8 && 
-        this.fields.password.length <= 12
-    }
-  },
   methods: {
     submitForm() {
       this.fieldsErrors = this.validateForm(this.fields);
