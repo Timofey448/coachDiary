@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center bg-gray-100 min-h-screen">
-    <img class="h-40 w-40 md:h-80 md:w-80" src="/src/assets/logo.svg" alt="">
+    <img class="h-40 w-40 md:h-60 md:w-80" src="/src/assets/logo.svg" alt="">
     <form
       class="flex flex-col bg-white py-6 px-6 font-medium w-72 md:w-600"
       @submit.prevent="submitForm"
