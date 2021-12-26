@@ -40,7 +40,7 @@
 
       <div class="flex flex-col">
         <button
-          class="rounded-md border bg-green-400 text-white font-medium p-2"
+          class="rounded-md bg-green-400 text-white font-medium p-2"
         >
         Create your account
         </button>
