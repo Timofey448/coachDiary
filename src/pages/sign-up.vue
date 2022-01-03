@@ -41,7 +41,7 @@
       <div class="flex flex-col">
         <button
           class="rounded-md bg-green-400 text-white font-medium p-2"
-        >
+        >        
         Create your account
         </button>
       </div>
@@ -49,7 +49,7 @@
 
     <div class="mt-3 flex">
       <router-link class="text-sky-400 font-medium" to="/sign-in">Log in</router-link>
-      <p class="text-gray-400">(if you already have an account)</p>      
+      <p class="text-gray-400">(if you already have an account)</p> 
     </div>
   </div> 
 </template>
@@ -76,9 +76,11 @@ export default {
       this.fieldsErrors = this.validateForm(this.fields);
       if (Object.keys(this.fieldsErrors).length) return;
 
-      this.fields.email = "";
-      this.fields.password = "";
-      this.fields.confirmedPassword = "";
+      this.$store.dispatch('addEmail', this.fields.email);
+      this.$router.push({path: '/coach-panel'});
+      // this.fields.email = "";
+      // this.fields.password = "";
+      // this.fields.confirmedPassword = "";
     },
     validateForm(fields) {
       const errors = {};
@@ -115,6 +117,14 @@ export default {
       const passwordRegex = /[a-zA-Z0-9]/;
       return passwordRegex.test(password);      
     },
+    computed: {
+      email() {
+        return this.$store.getters.getEmail;
+      }
+    },
+    // created() {
+    //   this.$store.dispath('addEmail', this.fields.email);
+    // }
   },
 }
 </script>

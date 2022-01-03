@@ -4,8 +4,8 @@
       <!-- <img class="h-20 w-20 md:h-20 md:w-20" src="/src/assets/logo.svg" alt=""> -->
       <p class="text-sky-600 font-bold">LOGO</p>
       <div class="flex">
-        <p class="text-gray-500 mr-4">email</p>
-        <p>Logout</p>
+        <p class="text-gray-500 mr-4">{{ email }}</p>
+        <router-link to="/sign-up">Logout</router-link>
       </div>      
     </div>
 
@@ -22,7 +22,15 @@
 
 <script>
 export default {
-  name: "coach-panel"
+  name: "coach-panel",
+  computed: {
+    email() {
+      return this.$store.getters.getEmail;
+    }
+  },
+  // created() {
+  //   this.$store.dispath('addEmail', email);
+  // },
 }
 
 </script>
