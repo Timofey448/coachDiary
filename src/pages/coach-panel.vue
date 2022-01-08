@@ -5,7 +5,10 @@
       <p class="text-sky-600 font-bold">LOGO</p>
       <div class="flex">
         <p class="text-gray-500 mr-4">{{ email }}</p>
-        <router-link to="/sign-up">Logout</router-link>
+        <router-link
+          to="/sign-in"
+          @click="Logout"
+        >Logout</router-link>
       </div>      
     </div>
 
@@ -28,9 +31,11 @@ export default {
       return this.$store.getters.getEmail;
     }
   },
-  // created() {
-  //   this.$store.dispath('addEmail', email);
-  // },
+  methods: {
+    logout() {
+      this.$store.dispatch('removeEmail', this.email);
+    }
+  },
 }
 
 </script>

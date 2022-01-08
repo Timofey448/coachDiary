@@ -42,7 +42,7 @@
         <button
           class="rounded-md bg-green-400 text-white font-medium p-2"
         >        
-        Create your account
+          Create your account
         </button>
       </div>
     </form>
@@ -77,7 +77,9 @@ export default {
       if (Object.keys(this.fieldsErrors).length) return;
 
       this.$store.dispatch('addEmail', this.fields.email);
-      this.$router.push({path: '/coach-panel'});
+      this.$store.dispatch('addPassword', this.fields.password);
+      this.$store.dispatch('changeLog', true);
+      this.$router.push('/coach-panel');
       // this.fields.email = "";
       // this.fields.password = "";
       // this.fields.confirmedPassword = "";
@@ -117,14 +119,6 @@ export default {
       const passwordRegex = /[a-zA-Z0-9]/;
       return passwordRegex.test(password);      
     },
-    computed: {
-      email() {
-        return this.$store.getters.getEmail;
-      }
-    },
-    // created() {
-    //   this.$store.dispath('addEmail', this.fields.email);
-    // }
   },
 }
 </script>
