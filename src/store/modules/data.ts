@@ -1,18 +1,16 @@
+import { router } from "../../routes";
+
 const state = {
-  email: "",
-  password: "",
+  email: "",  
   userIsLoggedIn: false,
 };
   
 const mutations = {
   ADD_EMAIL(state, payload) {
     state.email = payload;
-  },
-  ADD_PASSWORD(state, payload) {
-    state.password = payload;
-  },
-  CHANGE_LOG(state, payload) {
-    state.userIsLoggedIn = payload;
+  }, 
+  CHANGE_LOG(state) {
+    state.userIsLoggedIn = true;
   },
   REMOVE_EMAIL(state) {
     state.email = "";
@@ -20,27 +18,25 @@ const mutations = {
 };
 
 const actions = {
-  addEmail(context, payload) {
+  signUp(context, payload) {
     context.commit('ADD_EMAIL', payload);
+    context.commit('CHANGE_LOG');
+    router.push('/coach-panel');  
   },
-  addPassword(context, payload) {
-    context.commit('ADD_PASSWORD', payload);
+  signIn(context, payload) {
+    context.commit('ADD_EMAIL', payload);
+    context.commit('CHANGE_LOG');
+    router.push('/coach-panel');
   },
-  changeLog(context, payload) {
-    context.commit('CHANGE_LOG', payload);
-  },
-  removeEmail(context, payload) {
-    context.commit('REMOVE_EMAIL', payload);
+  signOut(context) {
+    context.commit('REMOVE_EMAIL');
   },
 };
 
 const getters = {
   getEmail(state) {
     return state.email;
-  },
-  getPassword(state) {
-    return state.password;
-  },
+  }, 
   getLog(state) {
     return state.userIsLoggedIn;
   },

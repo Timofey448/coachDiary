@@ -57,13 +57,9 @@ export default {
       this.fieldsErrors = this.validateForm(this.fields);
       if (Object.keys(this.fieldsErrors).length) return;
 
-      this.$store.dispatch('addEmail', this.fields.email);
-      this.$store.dispatch('addPassword', this.fields.password);
-      this.$store.dispatch('changeLog', true);
-      this.$router.push('/coach-panel');
-
-      this.fields.email = "";
-      this.fields.password = "";
+      this.$store.dispatch('signIn', this.fields.email);
+      // this.fields.email = "";
+      // this.fields.password = "";
     },
     validateForm(fields) {
       const errors = {};

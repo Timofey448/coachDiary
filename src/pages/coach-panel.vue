@@ -7,7 +7,7 @@
         <p class="text-gray-500 mr-4">{{ email }}</p>
         <router-link
           to="/sign-in"
-          @click="Logout"
+          @click="logout"
         >Logout</router-link>
       </div>      
     </div>
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch('removeEmail', this.email);
+      this.$store.dispatch('signOut');
     }
   },
 }

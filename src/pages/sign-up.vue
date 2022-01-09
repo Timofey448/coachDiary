@@ -75,11 +75,8 @@ export default {
     submitForm() {
       this.fieldsErrors = this.validateForm(this.fields);
       if (Object.keys(this.fieldsErrors).length) return;
-
-      this.$store.dispatch('addEmail', this.fields.email);
-      this.$store.dispatch('addPassword', this.fields.password);
-      this.$store.dispatch('changeLog', true);
-      this.$router.push('/coach-panel');
+      
+      this.$store.dispatch('signUp', this.fields.email);
       // this.fields.email = "";
       // this.fields.password = "";
       // this.fields.confirmedPassword = "";
