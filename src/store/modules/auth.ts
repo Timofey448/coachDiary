@@ -2,7 +2,7 @@ import { router } from "../../routes";
 
 const state = {
   email: "",  
-  userIsLoggedIn: false,
+  IsUserLoggedIn: false,
 };
   
 const mutations = {
@@ -10,10 +10,11 @@ const mutations = {
     state.email = payload;
   }, 
   CHANGE_LOG(state) {
-    state.userIsLoggedIn = true;
+    state.IsUserLoggedIn = true;
   },
   REMOVE_EMAIL(state) {
     state.email = "";
+    state.IsUserLoggedIn = false;
   },
 };
 
@@ -31,14 +32,19 @@ const actions = {
   signOut(context) {
     context.commit('REMOVE_EMAIL');
   },
+  isLoggedIn(context) {
+    if (state.email != "") {
+      context.commit('CHANGE_LOG');
+    } 
+  },
 };
 
 const getters = {
   getEmail(state) {
     return state.email;
   }, 
-  getLog(state) {
-    return state.userIsLoggedIn;
+  IsUserLoggedIn(state) {
+    return state.IsUserLoggedIn;
   },
 };
 

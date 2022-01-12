@@ -65,9 +65,9 @@ export default {
         confirmedPassword: ""
       },
       fieldsErrors: {
-        email: undefined,
-        password: undefined,
-        confirmedPassword: undefined
+        email: null,
+        password: null,
+        confirmedPassword: null
       },
     }
   },
