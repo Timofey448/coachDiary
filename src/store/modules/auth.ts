@@ -28,9 +28,6 @@ const actions = {
 };
 
 const getters = {
-  getEmail() {
-    return state.email
-  },
   userIsLoggedIn: () => {
     return state.email !== "";
   },
