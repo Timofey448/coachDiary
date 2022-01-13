@@ -42,11 +42,11 @@ const getters = {
   },
 };
 
-const dataModule = {
+const authModule = {
   state,
   mutations,
   actions,
   getters
 }
 
-export default dataModule
+export default authModule
