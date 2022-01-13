@@ -47,8 +47,8 @@ export default {
         password: ""
       },
       fieldsErrors: {
-        email: undefined,
-        password: undefined
+        email: null,
+        password: null
       },
     }
   },
