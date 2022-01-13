@@ -1,17 +1,13 @@
 import { router } from "../../routes";
 
 const state = {
-  email: "",  
-  userIsLoggedIn: false,
+  email: "",
 };
   
 const mutations = {
   ADD_EMAIL(state, payload) {
     state.email = payload;
   }, 
-  CHANGE_LOG(state) {
-    state.userIsLoggedIn = true;
-  },
   REMOVE_EMAIL(state) {
     state.email = "";
   },
@@ -20,12 +16,10 @@ const mutations = {
 const actions = {
   signUp(context, payload) {
     context.commit('ADD_EMAIL', payload);
-    context.commit('CHANGE_LOG');
     router.push('/coach-panel');  
   },
   signIn(context, payload) {
     context.commit('ADD_EMAIL', payload);
-    context.commit('CHANGE_LOG');
     router.push('/coach-panel');
   },
   signOut(context) {
@@ -34,11 +28,11 @@ const actions = {
 };
 
 const getters = {
-  getEmail(state) {
-    return state.email;
-  }, 
-  getLog(state) {
-    return state.userIsLoggedIn;
+  getEmail() {
+    return state.email
+  },
+  userIsLoggedIn: () => {
+    return state.email !== "";
   },
 };
 
