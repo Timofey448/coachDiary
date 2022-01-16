@@ -28,7 +28,7 @@ export default {
   name: "coach-panel",
   computed: {
     email() {
-      return this.$store.getters.getEmail;
+      return this.$store.state.auth.email;
     }
   },
   methods: {
