@@ -24,16 +24,16 @@
             class="text-xs font-semibold uppercase text-gray-400">
             <tr>
               <th class="p-2 text-left">email</th>
-              <th class="p-2">firstname</th>
-              <th class="p-2">lastname</th>
-              <th class="p-2">status</th>
+              <th class="p-2 text-left">firstname</th>
+              <th class="p-2 text-left">lastname</th>
+              <th class="p-2 text-left">status</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="student in students">
               <td>{{ student.studentEmail }}</td>
-              <td></td>
-              <td></td>
+              <td>{{ student.firstName }}</td>
+              <td>{{ student.lastName }}</td>
               <td>{{ student.status }}</td>
             </tr>
           </tbody>
@@ -62,8 +62,8 @@ export default {
     return {
       students: [],
       inputEmail: "",
-      firstName: "",
-      lastName: ""
+      firstName: "Timofey",
+      lastName: "Prolubnikov"
     }
   },
   computed: {
@@ -85,7 +85,8 @@ export default {
         this.inputEmail = "";
         student.firstName = this.firstName;
         student.lastName = this.lastName;
-      }      
+      }
+      this.$store.dispatch('addStudent', this.students);  
     },
   },
 }
