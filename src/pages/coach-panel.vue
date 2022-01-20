@@ -30,7 +30,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="student in students">
+            <tr v-for="student in studentsData">
               <td>{{ student.studentEmail }}</td>
               <td>{{ student.firstName }}</td>
               <td>{{ student.lastName }}</td>
@@ -69,6 +69,9 @@ export default {
   computed: {
     email() {
       return this.$store.state.auth.email;
+    },
+    studentsData() {
+      return this.$store.state.data.students;
     }
   },
   methods: {
