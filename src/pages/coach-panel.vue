@@ -12,13 +12,45 @@
       </div>      
     </div>
 
-    <div class="flex flex-col container mx-auto items-start bg-white rounded-sm py-6 px-6 font-bold shadow-lg w-3/4">
-      <p class="text-2xl mb-4 text-gray-700">Welcome to CoachDiary, Timofey!</p>
-      <button
-        class="rounded-md border bg-sky-400 text-white font-medium px-6 py-2 w-auto"
-      >
-        Add your student
-      </button>
+    <div class="flex flex-col container mx-auto items-start bg-white rounded-sm py-6 px-6 shadow-lg w-3/4">
+      <p class="text-2xl text-gray-700 font-bold mb-6">Welcome to CoachDiary, Timofey!</p>
+      <p class="text-sm font-medium text-gray-500 mb-4">list of students</p>
+
+      <div>
+        <table
+          class="table-auto w-full"
+          v-if="this.students.length !== 0">
+          <thead
+            class="text-xs font-semibold uppercase text-gray-400">
+            <tr>
+              <th class="p-2 text-left">email</th>
+              <th class="p-2">firstname</th>
+              <th class="p-2">lastname</th>
+              <th class="p-2">status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="student in students">
+              <td>{{ student.studentEmail }}</td>
+              <td></td>
+              <td></td>
+              <td>{{ student.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <input
+          type="text"
+          placeholder="student email"
+          class="text-sm border rounded-md p-2 mr-2 mb-2"
+          v-model="inputEmail"
+        >
+        <button
+          @click="addNewStudent"
+          class="rounded-md bg-sky-400 text-white font-medium px-6 py-2 w-auto"
+        >Add your student
+        </button>
+      </div>
+
     </div>
   </div>
 </template>
@@ -26,6 +58,14 @@
 <script>
 export default {
   name: "coach-panel",
+  data() {
+    return {
+      students: [],
+      inputEmail: "",
+      firstName: "",
+      lastName: ""
+    }
+  },
   computed: {
     email() {
       return this.$store.state.auth.email;
@@ -34,7 +74,19 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('signOut');
-    }
+    },
+    addNewStudent() {
+      const student = {};
+
+      if (this.inputEmail) {
+        student.studentEmail = this.inputEmail;
+        student.status = "invited";      
+        this.students.push(student);
+        this.inputEmail = "";
+        student.firstName = this.firstName;
+        student.lastName = this.lastName;
+      }      
+    },
   },
 }
 
