@@ -18,7 +18,7 @@
 
       <div>
         <table
-          class="table-auto w-full"
+          class="table-auto w-full mb-4"
           v-if="this.students.length !== 0">
           <thead
             class="text-xs font-semibold uppercase text-gray-400">
@@ -29,12 +29,12 @@
               <th class="p-2 text-left">status</th>
             </tr>
           </thead>
-          <tbody>
-            <tr v-for="student in studentsData">
-              <td>{{ student.studentEmail }}</td>
-              <td>{{ student.firstName }}</td>
-              <td>{{ student.lastName }}</td>
-              <td>{{ student.status }}</td>
+          <tbody class="text-sm divide-y divide-gray-100">
+            <tr v-for="student in students">
+              <td class="p-2">{{ student.studentEmail }}</td>
+              <td class="p-2">{{ student.firstName }}</td>
+              <td class="p-2">{{ student.lastName }}</td>
+              <td class="p-2">{{ student.status }}</td>
             </tr>
           </tbody>
         </table>
@@ -60,7 +60,7 @@ export default {
   name: "coach-panel",
   data() {
     return {
-      students: [],
+      // students: [],
       inputEmail: "",
       firstName: "Timofey",
       lastName: "Prolubnikov"
@@ -70,8 +70,11 @@ export default {
     email() {
       return this.$store.state.auth.email;
     },
-    studentsData() {
-      return this.$store.state.data.students;
+    // studentsData() {
+    //   return this.$store.state.data.students;
+    // }
+    students() {
+      return this.$store.state.students.students;
     }
   },
   methods: {

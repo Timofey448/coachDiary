@@ -1,10 +1,10 @@
 import { createStore } from 'vuex';
 import auth from './modules/auth';
-import data from './modules/data';
+import students from './modules/students';
 
 export default createStore({
   modules: {
     auth,
-    data
+    students
   }
 });
