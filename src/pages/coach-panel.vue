@@ -60,7 +60,6 @@ export default {
   name: "coach-panel",
   data() {
     return {
-      // students: [],
       inputEmail: "",
       firstName: "Timofey",
       lastName: "Prolubnikov"
@@ -70,9 +69,6 @@ export default {
     email() {
       return this.$store.state.auth.email;
     },
-    // studentsData() {
-    //   return this.$store.state.data.students;
-    // }
     students() {
       return this.$store.state.students.students;
     }

@@ -3,14 +3,14 @@ const state = {
 }
 
 const mutations = {
-  ADD_STUDENT(state, payload) {
+  add_student(state, payload) {
     state.students = payload;
   }
 }
 
 const actions = {
   addStudent(context, payload) {
-    context.commit("ADD_STUDENT", payload);
+    context.commit("add_student", payload);
   }
 }
 
