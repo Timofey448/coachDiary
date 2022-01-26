@@ -77,9 +77,6 @@ export default {
       if (Object.keys(this.fieldsErrors).length) return;
       
       this.$store.dispatch('signUp', this.fields.email);
-      // this.fields.email = "";
-      // this.fields.password = "";
-      // this.fields.confirmedPassword = "";
     },
     validateForm(fields) {
       const errors = {};

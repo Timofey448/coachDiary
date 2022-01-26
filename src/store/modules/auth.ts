@@ -5,25 +5,25 @@ const state = {
 };
   
 const mutations = {
-  ADD_EMAIL(state, payload) {
+  addEmail(state, payload) {
     state.email = payload;
   }, 
-  REMOVE_EMAIL(state) {
+  removeEmail(state) {
     state.email = "";
   },
 };
 
 const actions = {
   signUp(context, payload) {
-    context.commit('ADD_EMAIL', payload);
+    context.commit('addEmail', payload);
     router.push('/coach-panel');  
   },
   signIn(context, payload) {
-    context.commit('ADD_EMAIL', payload);
+    context.commit('addEmail', payload);
     router.push('/coach-panel');
   },
   signOut(context) {
-    context.commit('REMOVE_EMAIL');
+    context.commit('removeEmail');
   },
 };
 
