@@ -4,7 +4,7 @@
     <form
       class="flex flex-col bg-white py-6 px-6 font-medium w-72 md:w-600"
       @submit.prevent="submitForm"
-    >
+    >      
       <div class="flex flex-col mb-4">
         <label class="mb-1 text-sky-600">Email</label>
         <input
@@ -55,6 +55,7 @@
 </template>
 
 <script>
+
 export default {
   name: "sign-up",
   data() {
@@ -62,9 +63,9 @@ export default {
       fields: {
         email: "",
         password: "",
-        confirmedPassword: ""
+        confirmedPassword: "",
       },
-      fieldsErrors: {
+      fieldsErrors: { 
         email: null,
         password: null,
         confirmedPassword: null
@@ -74,9 +75,10 @@ export default {
   methods: {
     submitForm() {
       this.fieldsErrors = this.validateForm(this.fields);
-      if (Object.keys(this.fieldsErrors).length) return;
+      if (Object.keys(this.fieldsErrors).length) return;      
       
       this.$store.dispatch('signUp', this.fields.email);
+
     },
     validateForm(fields) {
       const errors = {};

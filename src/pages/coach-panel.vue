@@ -13,7 +13,7 @@
     </div>
 
     <div class="flex flex-col container mx-auto items-start bg-white rounded-sm py-6 px-6 shadow-lg w-3/4">
-      <p class="text-2xl text-gray-700 font-bold mb-6">Welcome to CoachDiary, Timofey!</p>
+      <p class="text-2xl text-gray-700 font-bold mb-6">Welcome to CoachDiary, {{name}}!</p>
       <p class="text-sm font-medium text-gray-500 mb-4">list of students</p>
 
       <div>
@@ -31,7 +31,7 @@
           </thead>
           <tbody class="text-sm divide-y divide-gray-100">
             <tr v-for="student in students">
-              <td class="p-2">{{ student.studentEmail }}</td>
+              <td class="p-2">{{ student.email }}</td>
               <td class="p-2">{{ student.firstName }}</td>
               <td class="p-2">{{ student.lastName }}</td>
               <td class="p-2">{{ student.status }}</td>
@@ -56,13 +56,15 @@
 </template>
 
 <script>
+import jsonStudents from '../fixtures/coach/students.json'
+
 export default {
   name: "coach-panel",
   data() {
     return {
       inputEmail: "",
-      firstName: "Timofey",
-      lastName: "Prolubnikov"
+      // firstName: "Timofey",
+      // lastName: "Prolubnikov"
     }
   },
   computed: {
@@ -71,26 +73,33 @@ export default {
     },
     students() {
       return this.$store.state.students.students;
-    }
+    },
+    name() {
+      return this.$store.state.auth.name;
+    },
   },
   methods: {
     logout() {
       this.$store.dispatch('signOut');
     },
-    addNewStudent() {
-      const student = {};
+    // addNewStudent() {
+    //   const student = {};
 
-      if (this.inputEmail) {
-        student.studentEmail = this.inputEmail;
-        student.status = "invited";      
-        this.students.push(student);
-        this.inputEmail = "";
-        student.firstName = this.firstName;
-        student.lastName = this.lastName;
-      }
-      this.$store.dispatch('addStudent', this.students);  
-    },
+    //   if (this.inputEmail) {
+    //     // student.studentEmail = this.inputEmail;
+    //     student.status = "invited";      
+    //     this.students.push(student);
+    //     this.inputEmail = "";
+    //     student.firstName = this.firstName;
+    //     student.lastName = this.lastName;
+    //   }
+    //   this.$store.dispatch('addStudent', this.students);  
+    // },
   },
+  mounted() {    
+    this.students = jsonStudents;
+    this.$store.dispatch('addStudent', jsonStudents);  
+  }
 }
 
 </script>
