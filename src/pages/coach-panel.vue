@@ -13,7 +13,7 @@
     </div>
 
     <div class="flex flex-col container mx-auto items-start bg-white rounded-sm py-6 px-6 shadow-lg w-3/4">
-      <p class="text-2xl text-gray-700 font-bold mb-6">Welcome to CoachDiary, {{name}}!</p>
+      <p class="text-2xl text-gray-700 font-bold mb-6">Welcome to CoachDiary, {{ name }}!</p>
       <p class="text-sm font-medium text-gray-500 mb-4">list of students</p>
 
       <div>
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import jsonStudents from '../fixtures/coach/students.json'
+import jsonStudents from '../fixtures/coach/students.json';
 
 export default {
   name: "coach-panel",
@@ -98,10 +98,9 @@ export default {
   },
   mounted() {    
     this.students = jsonStudents;
-    this.$store.dispatch('addStudent', jsonStudents);  
+    this.$store.dispatch('addStudent', jsonStudents);
   }
 }
-
 </script>
 
 <style scoped></style>
