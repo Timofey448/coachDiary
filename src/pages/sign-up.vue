@@ -12,8 +12,7 @@
           placeholder="Enter your name"
           class="border rounded-md p-2 text-sm"
           v-model="fields.name"
-        >
-        <!-- <span class="text-red-500">{{ fieldsErrors.name }}</span> -->
+        >        
       </div>
       
       <div class="flex flex-col mb-4">
@@ -23,8 +22,7 @@
           placeholder="Enter your email adress"
           class="border rounded-md p-2 text-sm"
           v-model="fields.email"
-        >
-        <!-- <span class="text-red-500">{{ fieldsErrors.email }}</span> -->
+        >        
       </div>
 
       <div class="flex flex-col mb-4">
@@ -34,8 +32,8 @@
           placeholder="Enter your password"
           class="border rounded-md p-2 text-sm"
           v-model="fields.password"
-        >        
-        <!-- <span class="text-red-500">{{ fieldsErrors.password }}</span> -->
+        >       
+        
       </div>
 
       <div class="flex flex-col mb-4">
@@ -45,8 +43,7 @@
           placeholder="Confirm your password"
           class="border rounded-md p-2 text-sm"
           v-model="fields.confirmedPassword"
-        >
-        <!-- <span class="text-red-500">{{ fieldsErrors.confirmedPassword }}</span> -->
+        >        
       </div>
 
       <div class="flex flex-col">

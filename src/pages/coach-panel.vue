@@ -63,8 +63,6 @@ export default {
   data() {
     return {
       inputEmail: "",
-      // firstName: "Timofey",
-      // lastName: "Prolubnikov"
     }
   },
   computed: {
@@ -81,20 +79,7 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('signOut');
-    },
-    // addNewStudent() {
-    //   const student = {};
-
-    //   if (this.inputEmail) {
-    //     // student.studentEmail = this.inputEmail;
-    //     student.status = "invited";      
-    //     this.students.push(student);
-    //     this.inputEmail = "";
-    //     student.firstName = this.firstName;
-    //     student.lastName = this.lastName;
-    //   }
-    //   this.$store.dispatch('addStudent', this.students);  
-    // },
+    }
   },
   mounted() {    
     this.students = jsonStudents;
