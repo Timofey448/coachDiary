@@ -4,7 +4,17 @@
     <form
       class="flex flex-col bg-white py-6 px-6 font-medium w-72 md:w-600"
       @submit.prevent="submitForm"
-    >
+    >      
+      <div class="flex flex-col mb-4">
+        <label class="mb-1 text-sky-600">Name</label>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          class="border rounded-md p-2 text-sm"
+          v-model="fields.name"
+        >        
+      </div>
+      
       <div class="flex flex-col mb-4">
         <label class="mb-1 text-sky-600">Email</label>
         <input
@@ -12,8 +22,7 @@
           placeholder="Enter your email adress"
           class="border rounded-md p-2 text-sm"
           v-model="fields.email"
-        >
-        <span class="text-red-500">{{ fieldsErrors.email }}</span>
+        >        
       </div>
 
       <div class="flex flex-col mb-4">
@@ -23,8 +32,8 @@
           placeholder="Enter your password"
           class="border rounded-md p-2 text-sm"
           v-model="fields.password"
-        >        
-        <span class="text-red-500">{{ fieldsErrors.password }}</span>
+        >       
+        
       </div>
 
       <div class="flex flex-col mb-4">
@@ -34,8 +43,7 @@
           placeholder="Confirm your password"
           class="border rounded-md p-2 text-sm"
           v-model="fields.confirmedPassword"
-        >
-        <span class="text-red-500">{{ fieldsErrors.confirmedPassword }}</span>
+        >        
       </div>
 
       <div class="flex flex-col">
@@ -55,16 +63,20 @@
 </template>
 
 <script>
+import jsonUser from '../fixtures/coach/user.json';
+
 export default {
   name: "sign-up",
   data() {
     return {
       fields: {
-        email: "",
-        password: "",
-        confirmedPassword: ""
+        name: jsonUser.name,
+        email: jsonUser.email,
+        password: jsonUser.password,
+        confirmedPassword: jsonUser.confirmedPassword,
       },
       fieldsErrors: {
+        name: null,
         email: null,
         password: null,
         confirmedPassword: null
@@ -74,12 +86,14 @@ export default {
   methods: {
     submitForm() {
       this.fieldsErrors = this.validateForm(this.fields);
-      if (Object.keys(this.fieldsErrors).length) return;
+      if (Object.keys(this.fieldsErrors).length) return;      
       
-      this.$store.dispatch('signUp', this.fields.email);
+      this.$store.dispatch('signUp', this.fields);
+
     },
     validateForm(fields) {
       const errors = {};
+      if (!fields.name) errors.name = "New name required";
       if (!fields.email) errors.email = "New email required";
       if (!fields.password) errors.password = "New password required";
       if (fields.password && !fields.confirmedPassword) {
@@ -112,7 +126,7 @@ export default {
     isPassword(password) {
       const passwordRegex = /[a-zA-Z0-9]/;
       return passwordRegex.test(password);      
-    },
+    },    
   },
 }
 </script>

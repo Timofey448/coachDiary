@@ -37,16 +37,19 @@
 </template>
 
 <script>
+import jsonUser from '../fixtures/coach/user.json';
 
 export default {
   name: "sign-in",
   data() {
     return {
       fields: {
-        email: "",
-        password: ""
+        name: jsonUser.name,
+        email: jsonUser.email,
+        password: jsonUser.password,
       },
       fieldsErrors: {
+        name: null,
         email: null,
         password: null
       },
@@ -57,7 +60,7 @@ export default {
       this.fieldsErrors = this.validateForm(this.fields);
       if (Object.keys(this.fieldsErrors).length) return;
 
-      this.$store.dispatch('signIn', this.fields.email);
+      this.$store.dispatch('signIn', this.fields);
     },
     validateForm(fields) {
       const errors = {};
