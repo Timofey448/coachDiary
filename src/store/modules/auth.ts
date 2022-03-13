@@ -1,4 +1,5 @@
 import { router } from "../../routes";
+import { login } from "../../api/auth";
 
 const state = {
   email: "",
@@ -6,7 +7,7 @@ const state = {
   
 const mutations = {
   addEmail(state, payload) {
-    state.email = payload;
+    state.email = payload.email;
   }, 
   removeEmail(state) {
     state.email = "";
@@ -14,7 +15,7 @@ const mutations = {
 };
 
 const actions = {
-  signUp(context, payload) {
+  signUp(context, payload) {    
     context.commit('addEmail', payload);
     router.push('/coach-panel');  
   },

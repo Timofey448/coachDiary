@@ -1,0 +1,17 @@
+[
+  {
+    "role": "student",
+    "firstName": "Ivan",
+    "email": "first@email.com"
+  },
+  {
+    "role": "student",
+    "firstName": "Oleg",
+    "email": "second@email.com"
+  },
+  {
+    "role": "coach",
+    "firstName": "Timofey",
+    "email": "third@email.com"
+  }
+]
