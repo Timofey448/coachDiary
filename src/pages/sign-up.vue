@@ -76,7 +76,7 @@ export default {
       this.fieldsErrors = this.validateForm(this.fields);
       if (Object.keys(this.fieldsErrors).length) return;
       
-      this.$store.dispatch('signUp', this.fields.email);
+      this.$store.dispatch('signUp', this.fields);
     },
     validateForm(fields) {
       const errors = {};
