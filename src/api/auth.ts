@@ -5,8 +5,6 @@ export function login(data) {
     for (let student of students) {
       if (student.email == data.email) {
         return student
-      } else {
-        continue
       }
     }
   } catch(err) {
