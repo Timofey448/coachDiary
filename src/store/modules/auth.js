@@ -6,7 +6,7 @@ const state = {
   email: "",
   password: "",
 };
-  
+
 const mutations = {
   setupUser(state, payload) {
     state.email = payload.email;
@@ -19,21 +19,20 @@ const mutations = {
 };
 
 const actions = {
-  signUp(context, payload) {    
-    context.commit('setupUser', payload);   
+  signUp(context, payload) {
+    context.commit('setupUser', payload);
 
-    router.push('/coach-panel');  
+    router.push('/coach-panel');
   },
-  signIn(context, payload) {    
+  signIn(context, payload) {
     login(payload);
-    
     if (login(payload).role == "coach") {
       context.commit('setupUser', payload);
       router.push('/coach-panel');
     } else if (login(payload).role == "student") {
       context.commit('setupUser', payload);
       router.push('/student-panel');
-    } 
+    }
   },
   signOut(context) {
     context.commit('cleanupUser');
