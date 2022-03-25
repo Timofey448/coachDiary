@@ -2,6 +2,7 @@ import { router } from "../../routes";
 import { login } from "../../api/auth";
 
 const state = {
+  name: "",
   email: "",
   password: "",
 };
@@ -20,6 +21,7 @@ const mutations = {
 const actions = {
   signUp(context, payload) {    
     context.commit('setupUser', payload);   
+
     router.push('/coach-panel');  
   },
   signIn(context, payload) {    

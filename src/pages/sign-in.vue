@@ -37,16 +37,19 @@
 </template>
 
 <script>
+import jsonUser from '../fixtures/coach/user.json';
 
 export default {
   name: "sign-in",
   data() {
     return {
       fields: {
-        email: "",
-        password: ""
+        name: jsonUser.name,
+        email: jsonUser.email,
+        password: jsonUser.password,
       },
       fieldsErrors: {
+        name: null,
         email: null,
         password: null
       },

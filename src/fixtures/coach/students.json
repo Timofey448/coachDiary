@@ -1,0 +1,20 @@
+{
+  "student-1": {
+    "email": "Rich@rambler.ru",
+    "firstName": "Rich",
+    "lastName": "Froning",
+    "status": "invited"
+  },
+  "student-2": {
+    "email": "Dan@rambler.ru",
+    "firstName": "Dan",
+    "lastName": "Bailey",
+    "status": "invited"
+  },
+  "student-3": {
+    "email": "Ben@rambler.ru",
+    "firstName": "Ben",
+    "lastName": "Smith",
+    "status": "invited"
+  } 
+}
