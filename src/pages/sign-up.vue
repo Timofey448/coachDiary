@@ -32,8 +32,7 @@
           placeholder="Enter your password"
           class="border rounded-md p-2 text-sm"
           v-model="fields.password"
-        >       
-        
+        >
       </div>
 
       <div class="flex flex-col mb-4">
