@@ -13,7 +13,7 @@
     </div>
 
     <div class="flex flex-col container mx-auto items-start bg-white rounded-sm py-6 px-6 shadow-lg w-3/4">
-      <p class="text-2xl text-gray-700 font-bold mb-6">Welcome to CoachDiary, Timofey!</p>
+      <p class="text-2xl text-gray-700 font-bold mb-6">Welcome to CoachDiary, {{ name }}!</p>
     </div>
   </div>
 </template>
@@ -24,14 +24,17 @@ export default {
   data() {
     return {
       inputEmail: "",
-      firstName: "Timofey",
-      lastName: "Prolubnikov"
+      firstName: "",
+      lastName: ""
     }
   },
   computed: {
     email() {
       return this.$store.state.auth.email;
-    }
+    },
+    name() {
+      return this.$store.state.auth.name;
+    },
   },
   methods: {
     logout() {

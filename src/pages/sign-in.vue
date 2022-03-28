@@ -32,26 +32,28 @@
         >Start your work
         </button>
       </div>
+      <span class="text-red-500 mt-2">{{ fieldsErrors.message }}</span>
     </form>
   </div> 
 </template>
 
 <script>
-import jsonUser from '../fixtures/coach/user.json';
+import { login } from "../api/auth";
 
 export default {
   name: "sign-in",
   data() {
     return {
       fields: {
-        name: jsonUser.name,
-        email: jsonUser.email,
-        password: jsonUser.password,
+        name: "",
+        email: "",
+        password: "",
       },
       fieldsErrors: {
         name: null,
         email: null,
-        password: null
+        password: null,
+        message: null,
       },
     }
   },
@@ -59,7 +61,6 @@ export default {
     submitForm() {
       this.fieldsErrors = this.validateForm(this.fields);
       if (Object.keys(this.fieldsErrors).length) return;
-
       this.$store.dispatch('signIn', this.fields);
     },
     validateForm(fields) {
@@ -70,6 +71,7 @@ export default {
         (fields.password.length < 8 || fields.password.length > 12)) {
         errors.password = "Please enter 8-12 characters";
       } 
+      if (login(fields) === undefined) errors.message = "Authentication Error"
       return errors;
     },
   },
