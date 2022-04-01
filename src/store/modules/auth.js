@@ -17,6 +17,7 @@ const mutations = {
     state.email = "";
     state.password = "";
     state.name = "";
+    localStorage.removeItem("currentUser");
   },
 };
 

@@ -7,7 +7,14 @@ import {defineComponent} from 'vue'
 
 export default defineComponent({
   name: 'App',
-  components: {}
+  components: {},
+  mounted() {
+    let currentUserEmail = localStorage.getItem("currentUser");
+
+    if (currentUserEmail != null) {
+      this.$store.dispatch("signIn", {email: currentUserEmail});
+    };   
+  },
 })
 </script>
 
