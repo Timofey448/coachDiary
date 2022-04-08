@@ -56,7 +56,7 @@
             value="Coach"
             id="coach"
             name="radio"
-            v-model="fields.picked"
+            v-model="fields.role"
             class="mr-1"                     
           >
           <label for="coach">Coach</label>
@@ -68,13 +68,13 @@
             value="Mentee"
             id="mentee"
             name="radio"
-            v-model="fields.picked"
+            v-model="fields.role"
             class="mr-1"          
           >
           <label for="mentee">Mentee</label>
         </div>        
       </div>
-      <span class="text-red-500">{{ fieldsErrors.picked }}</span>
+      <span class="text-red-500">{{ fieldsErrors.role }}</span>
 
       <div class="flex flex-col">
         <button
@@ -105,14 +105,14 @@ export default {
         email: "",
         password: "",
         confirmedPassword: "",
-        picked: "",
+        role: "",
       },
       fieldsErrors: {
         name: null,
         email: null,
         password: null,
         confirmedPassword: null,
-        picked: null,
+        role: null,
       },
     }
   },
@@ -149,7 +149,7 @@ export default {
         fields.confirmedPassword !== fields.password) {
           errors.confirmedPassword = "Passwords mismath";
       }
-      if (!fields.picked) errors.picked = "Please select your role";
+      if (!fields.role) errors.role = "Please select your role";
       return errors;
     },
     isEmail(email) {

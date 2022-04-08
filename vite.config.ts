@@ -6,12 +6,12 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://51.250.105.185:8000/",
+        target: "http://51.250.105.185:8000/api/auth/users",
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\api/,""),
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },
-  plugins: [vue()]
+  plugins: [vue()],
 })

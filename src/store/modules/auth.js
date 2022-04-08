@@ -1,5 +1,7 @@
 import { router } from "../../routes";
-import { login } from "../../api/auth";
+import {default as createUser, login} from '../../api/auth';
+// import login from "../../api/auth";
+// import createUser from "../../api/auth";
 
 const state = {
   name: "",
@@ -23,6 +25,7 @@ const mutations = {
 
 const actions = {
   signUp(context, payload) {
+    createUser(payload);
     context.commit('setupUser', payload);
     router.push('/coach-panel');
   },
