@@ -1,4 +1,4 @@
-// import students from './students.json'
+import students from './students.json'
 import axios from 'axios';
 export function login(data) {
   try {
@@ -15,7 +15,7 @@ export function login(data) {
 }
 
 export default function createUser(data) {
-  axios.post("http://51.250.105.185:8000/api/auth/users", {
+  axios.post('/api/auth/users', {
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
       'Access-Control-Allow-Origin': '*'

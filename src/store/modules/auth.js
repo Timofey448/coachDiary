@@ -26,18 +26,25 @@ const mutations = {
 const actions = {
   signUp(context, payload) {
     createUser(payload);
-    context.commit('setupUser', payload);
-    router.push('/coach-panel');
-  },
-  signIn(context, payload) {
-    payload.name = login(payload).firstName;  
-    if (login(payload).role == "coach") {
+    console.log(payload);
+    if (payload.role == "Coach") {
       context.commit('setupUser', payload);
       router.push('/coach-panel');
 
-    } else if (login(payload).role == "student") {             
+    } else if (payload.role == "Mentee") {             
       context.commit('setupUser', payload);
-      router.push('/student-panel');
+      router.push('/mentee-panel');
+    }   
+  },
+  signIn(context, payload) {
+    payload.name = login(payload).firstName;  
+    if (login(payload).role == "Coach") {
+      context.commit('setupUser', payload);
+      router.push('/coach-panel');
+
+    } else if (login(payload).role == "Mentee") {             
+      context.commit('setupUser', payload);
+      router.push('/mentee-panel');
     }
   },
   signOut(context) {
