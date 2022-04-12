@@ -4,9 +4,9 @@ export function login(data) {
   try {
     for (let student of students) {
       if (student.email == data.email) {
-        
+
         localStorage.setItem("currentUser", student.email);
-        return student;  
+        return student;
       }
     }
   } catch(err) {
@@ -15,13 +15,7 @@ export function login(data) {
 }
 
 export default function createUser(data) {
-  axios.post('/api/auth/users', {
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*'
-    },
-    data
-  })
+  axios.post('/api/auth/users', data)
   .then(res => {console.log(res)})
   .catch(e => { console.log(e) })
 }
