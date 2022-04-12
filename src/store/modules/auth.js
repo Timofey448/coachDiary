@@ -27,6 +27,7 @@ const actions = {
   signUp(context, payload) {
     createUser(payload);
     console.log(payload);
+    console.log(createUser(payload));
     if (payload.role == "Coach") {
       context.commit('setupUser', payload);
       router.push('/coach-panel');
