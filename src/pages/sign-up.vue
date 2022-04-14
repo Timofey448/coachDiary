@@ -53,7 +53,7 @@
         <div class="mr-4">
           <input
             type="radio"
-            value="Coach"
+            value="coach"
             id="coach"
             name="radio"
             v-model="fields.role"
@@ -65,7 +65,7 @@
         <div>
           <input
             type="radio"
-            value="Mentee"
+            value="student"
             id="mentee"
             name="radio"
             v-model="fields.role"

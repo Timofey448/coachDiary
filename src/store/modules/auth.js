@@ -1,7 +1,5 @@
 import { router } from "../../routes";
 import {default as createUser, login} from '../../api/auth';
-// import login from "../../api/auth";
-// import createUser from "../../api/auth";
 
 const state = {
   name: "",
@@ -28,22 +26,22 @@ const actions = {
     createUser(payload);
     console.log(payload);
     console.log(createUser(payload));
-    if (payload.role == "Coach") {
+    if (payload.role == "coach") {
       context.commit('setupUser', payload);
       router.push('/coach-panel');
 
-    } else if (payload.role == "Mentee") {             
+    } else if (payload.role == "student") {             
       context.commit('setupUser', payload);
       router.push('/mentee-panel');
     }   
   },
   signIn(context, payload) {
     payload.name = login(payload).firstName;  
-    if (login(payload).role == "Coach") {
+    if (login(payload).role == "coach") {
       context.commit('setupUser', payload);
       router.push('/coach-panel');
 
-    } else if (login(payload).role == "Mentee") {             
+    } else if (login(payload).role == "student") {             
       context.commit('setupUser', payload);
       router.push('/mentee-panel');
     }
