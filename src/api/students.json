@@ -1,16 +1,16 @@
 [
   {
-    "role": "Mentee",
+    "role": "student",
     "firstName": "Ivan",
     "email": "first@email.com"
   },
   {
-    "role": "Mentee",
+    "role": "student",
     "firstName": "Oleg",
     "email": "second@email.com"
   },
   {
-    "role": "Coach",
+    "role": "coach",
     "firstName": "Timofey",
     "email": "third@email.com"
   }
