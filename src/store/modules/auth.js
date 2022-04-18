@@ -1,5 +1,5 @@
 import { router } from "../../routes";
-import { login } from "../../api/auth";
+import {default as createUser, login} from '../../api/auth';
 
 const state = {
   name: "",
@@ -23,8 +23,17 @@ const mutations = {
 
 const actions = {
   signUp(context, payload) {
-    context.commit('setupUser', payload);
-    router.push('/coach-panel');
+    createUser(payload);
+    console.log(payload);
+    console.log(createUser(payload));
+    if (payload.role == "coach") {
+      context.commit('setupUser', payload);
+      router.push('/coach-panel');
+
+    } else if (payload.role == "student") {             
+      context.commit('setupUser', payload);
+      router.push('/mentee-panel');
+    }   
   },
   signIn(context, payload) {
     payload.name = login(payload).firstName;  
@@ -34,7 +43,7 @@ const actions = {
 
     } else if (login(payload).role == "student") {             
       context.commit('setupUser', payload);
-      router.push('/student-panel');
+      router.push('/mentee-panel');
     }
   },
   signOut(context) {

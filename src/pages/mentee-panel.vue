@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "student-panel",
+  name: "mentee-panel",
   data() {
     return {
       inputEmail: "",

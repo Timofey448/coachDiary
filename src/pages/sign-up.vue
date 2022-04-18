@@ -12,7 +12,8 @@
           placeholder="Enter your name"
           class="border rounded-md p-2 text-sm"
           v-model="fields.name"
-        >        
+        >
+        <span class="text-red-500">{{ fieldsErrors.name }}</span>      
       </div>
       
       <div class="flex flex-col mb-4">
@@ -22,7 +23,8 @@
           placeholder="Enter your email adress"
           class="border rounded-md p-2 text-sm"
           v-model="fields.email"
-        >        
+        >
+        <span class="text-red-500">{{ fieldsErrors.email }}</span>   
       </div>
 
       <div class="flex flex-col mb-4">
@@ -33,6 +35,7 @@
           class="border rounded-md p-2 text-sm"
           v-model="fields.password"
         >
+        <span class="text-red-500">{{ fieldsErrors.password }}</span>
       </div>
 
       <div class="flex flex-col mb-4">
@@ -42,8 +45,36 @@
           placeholder="Confirm your password"
           class="border rounded-md p-2 text-sm"
           v-model="fields.confirmedPassword"
-        >        
+        >
+        <span class="text-red-500">{{ fieldsErrors.confirmedPassword }}</span>    
       </div>
+
+      <div class="flex items-center text-gray-400 text-sm mb-2">
+        <div class="mr-4">
+          <input
+            type="radio"
+            value="coach"
+            id="coach"
+            name="radio"
+            v-model="fields.role"
+            class="mr-1"                     
+          >
+          <label for="coach">Coach</label>
+        </div>
+        
+        <div>
+          <input
+            type="radio"
+            value="student"
+            id="mentee"
+            name="radio"
+            v-model="fields.role"
+            class="mr-1"          
+          >
+          <label for="mentee">Mentee</label>
+        </div>        
+      </div>
+      <span class="text-red-500">{{ fieldsErrors.role }}</span>
 
       <div class="flex flex-col">
         <button
@@ -52,6 +83,8 @@
           Create your account
         </button>
       </div>
+
+      
     </form>
 
     <div class="mt-3 flex">
@@ -62,23 +95,24 @@
 </template>
 
 <script>
-import jsonUser from '../fixtures/coach/user.json';
 
 export default {
   name: "sign-up",
   data() {
     return {
       fields: {
-        name: jsonUser.name,
-        email: jsonUser.email,
-        password: jsonUser.password,
-        confirmedPassword: jsonUser.confirmedPassword,
+        name: "",
+        email: "",
+        password: "",
+        confirmedPassword: "",
+        role: "",
       },
       fieldsErrors: {
         name: null,
         email: null,
         password: null,
-        confirmedPassword: null
+        confirmedPassword: null,
+        role: null,
       },
     }
   },
@@ -114,7 +148,8 @@ export default {
       if (fields.confirmedPassword && 
         fields.confirmedPassword !== fields.password) {
           errors.confirmedPassword = "Passwords mismath";
-      } 
+      }
+      if (!fields.role) errors.role = "Please select your role";
       return errors;
     },
     isEmail(email) {
