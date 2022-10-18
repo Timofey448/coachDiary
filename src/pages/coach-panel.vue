@@ -19,7 +19,7 @@
       <div>
         <table
           class="table-auto w-full mb-4"
-          v-if="this.students.length !== 0">
+          v-if="students.length !== 0">
           <thead
             class="text-xs font-semibold uppercase text-gray-400">
             <tr>
@@ -55,7 +55,7 @@
   </div>
 </template>
 
-<script>
+<script lang="js">
 import jsonStudents from '../fixtures/coach/students.json';
 
 export default {
@@ -79,7 +79,8 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('signOut');
-    }
+    },
+    addNewStudent() {}
   },
   mounted() {    
     this.students = jsonStudents;
