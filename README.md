@@ -1,5 +1,6 @@
-Запустить проект в тестовом режиме:
+# CoachDiary
+https://timofey448.github.io/coachDiary/
 
- `npm install`
- 
- `npm run`
+Приложение - электронный дневник ученика и тренера
+
+Стили: Tailwind
